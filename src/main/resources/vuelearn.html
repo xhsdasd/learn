@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="tes">{{message}}
+<ul>
+    <li v-for="item in info">{{item}} </li>
+</ul>
+    <h2>当前计数：{{counter}}</h2>
+    <button v-on:click="add">+</button>
+    <button v-on:click="dec">-</button>
+</div>
+<script>
+    let app=new Vue({
+        el:"#tes",
+        data:{
+            message:"123123",
+            info:['收到','了解','明白'],
+            counter:0
+        },
+        methods:{
+            add:function () {
+                console.log("进行加法操作")
+                this.counter++
+            },
+            dec:function () {
+                console.log("进行减法操作")
+                this.counter--
+            }
+        }
+    })
+
+</script>
+</body>
+
+</html>
