@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/vue.js"></script>
+
+<body>
+<div id="app">
+<cpn @couterinc="changecounter"></cpn>
+    <h2 >当前计数为：{{counter}}</h2>
+</div>
+<template id="cpn">
+    <div>
+    <button @click="inc">+</button>
+    <button @click="dec">-</button>
+    </div>
+</template>
+<script>
+    Vue.component('cpn', {
+        template:'#cpn',
+        data(){
+           return { counter:0}
+        },
+
+        methods:{
+            inc(){
+                this.counter++;
+                this.$emit('couterinc',this.counter)
+            },
+            dec(){
+                this.counter--
+                this.$emit('couterinc',this.counter)
+            }
+        },
+
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            counter:0
+        },
+        component:{
+            cpn
+        },
+        methods: {
+            changecounter(ccout){
+                this.counter=ccout
+            }
+        }
+    })
+</script>
+</body>
+</html>
